@@ -41,11 +41,11 @@ const Formulario = ({ setEstadoAlerta }) => {
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      setEstadoAlerta("failed");
+      setEstadoAlerta("danger");
       event.preventDefault();
       event.stopPropagation();
     } else {
-      setEstadoAlerta("succeed");
+      setEstadoAlerta("succees");
     }
     setValidated(true);
   }
