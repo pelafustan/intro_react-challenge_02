@@ -47,7 +47,7 @@ const Formulario = ({ setEstadoAlerta }) => {
     if (form.checkValidity() === false) {
       setEstadoAlerta("danger");
       event.preventDefault();
-      event.stopPropagation();
+      event.stopImmediatePropagation();
     } else {
       setEstadoAlerta("success");
       setValidated(true);
