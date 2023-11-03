@@ -45,7 +45,7 @@ const Formulario = ({ setEstadoAlerta }) => {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      setEstadoAlerta("succees");
+      setEstadoAlerta("success");
     }
     setValidated(true);
   }
@@ -74,8 +74,8 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="user@example.com"
             onChange={handleChange}
             onFocus={handleFocus}
-            isValid={/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.userMail) && wasFocused.userMail}
-            isInvalid={!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.userMail) && wasFocused.userMail}
+            isValid={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(data.userMail) && wasFocused.userMail}
+            isInvalid={!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(data.userMail) && wasFocused.userMail}
           />
           <Form.Control.Feedback type="invalid">Ingresa un Email válido</Form.Control.Feedback>
         </Form.Group>
@@ -100,7 +100,7 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="Repite contraseña"
             onChange={handleChange}
             onFocus={handleFocus}
-            isValid={data.userPass === data.userPassConfirm && data.userPassConfirm !== "" && wasFocused.userPassConfirm}
+            isValid={(data.userPass === data.userPassConfirm || data.userPassConfirm !== "") && wasFocused.userPassConfirm}
             isInvalid={(data.userPass !== data.userPassConfirm || data.userPassConfirm === "") && wasFocused.userPassConfirm}
           />
           <Form.Control.Feedback type="invalid">Contraseñas nos coinciden</Form.Control.Feedback>
