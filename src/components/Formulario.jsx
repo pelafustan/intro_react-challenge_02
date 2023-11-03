@@ -2,6 +2,10 @@ import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
 
 const Formulario = ({ setEstadoAlerta }) => {
+  // regex para validación
+  const mailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const nameRegex = /^([a-zA-Z]{2,}\s?)+$/;
+
   // una variable y un setter para todo los inputs del formulario
   const [data, setData] = useState({
     userName: "",
@@ -46,8 +50,8 @@ const Formulario = ({ setEstadoAlerta }) => {
       event.stopPropagation();
     } else {
       setEstadoAlerta("success");
+      setValidated(true);
     }
-    setValidated(true);
   }
 
   return (
@@ -61,7 +65,7 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="Nombre"
             onChange={handleChange}
             onFocus={handleFocus}
-            isValid={/^([a-zA-Z]{2,}\s?)+$/.test(data.userName) && wasFocused.userName}
+            isValid={nameRegex.test(data.userName) && wasFocused.userName}
             isInvalid={!/^([a-zA-Z]{2,}\s?)+$/.test(data.userName) && wasFocused.userName}
           />
           <Form.Control.Feedback type="invalid">Ingresa un nombre</Form.Control.Feedback>
@@ -74,8 +78,8 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="user@example.com"
             onChange={handleChange}
             onFocus={handleFocus}
-            isValid={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(data.userMail) && wasFocused.userMail}
-            isInvalid={!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(data.userMail) && wasFocused.userMail}
+            isValid={mailRegex.test(data.userMail) && wasFocused.userMail}
+            isInvalid={!mailRegex.test(data.userMail) && wasFocused.userMail}
           />
           <Form.Control.Feedback type="invalid">Ingresa un Email válido</Form.Control.Feedback>
         </Form.Group>
@@ -100,7 +104,7 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="Repite contraseña"
             onChange={handleChange}
             onFocus={handleFocus}
-            isValid={(data.userPass === data.userPassConfirm || data.userPassConfirm !== "") && wasFocused.userPassConfirm}
+            isValid={data.userPass === data.userPassConfirm && data.userPassConfirm.length >= 8 && wasFocused.userPassConfirm}
             isInvalid={(data.userPass !== data.userPassConfirm || data.userPassConfirm === "") && wasFocused.userPassConfirm}
           />
           <Form.Control.Feedback type="invalid">Contraseñas nos coinciden</Form.Control.Feedback>
