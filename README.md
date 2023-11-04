@@ -13,5 +13,5 @@ Se solicita crear un login page sencillo, usando `react`, `react-bootstrap`, y `
 
 ### Agradecimientos
 
-* Diego Rojas (Marcela)
+* Diego Rojas (Marcela ocupó su equipo para realizar los commit)
 * Café negro (Patricio)
