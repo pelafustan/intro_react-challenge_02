@@ -43,11 +43,10 @@ const Formulario = ({ setEstadoAlerta }) => {
 
   // función que se encarga de gestionar el evento onSubmit
   const handleSubmit = (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       setEstadoAlerta("danger");
-      event.preventDefault();
-      event.stopImmediatePropagation();
     } else {
       setEstadoAlerta("success");
       setValidated(true);
