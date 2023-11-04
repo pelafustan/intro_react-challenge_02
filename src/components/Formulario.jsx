@@ -56,7 +56,7 @@ const Formulario = ({ setEstadoAlerta }) => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group className="mb-5">
+        <Form.Group className="mb-2">
           <Form.Control
             required
             name="userName"
@@ -69,7 +69,7 @@ const Formulario = ({ setEstadoAlerta }) => {
           />
           <Form.Control.Feedback type="invalid">Ingresa un nombre</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-5">
+        <Form.Group className="mb-2">
           <Form.Control
             required
             name="userMail"
@@ -82,7 +82,7 @@ const Formulario = ({ setEstadoAlerta }) => {
           />
           <Form.Control.Feedback type="invalid">Ingresa un Email válido</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-2">
           <Form.Control
             required
             name="userPass"
@@ -95,7 +95,7 @@ const Formulario = ({ setEstadoAlerta }) => {
           />
           <Form.Control.Feedback type="invalid">Contraseña debe tener al menos 8 caracteres</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-5">
+        <Form.Group className="mb-2">
           <Form.Control
             required
             name="userPassConfirm"
@@ -108,7 +108,7 @@ const Formulario = ({ setEstadoAlerta }) => {
           />
           <Form.Control.Feedback type="invalid">Contraseñas nos coinciden</Form.Control.Feedback>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="success" type="submit">
           Registrarse
         </Button>
       </Form>
