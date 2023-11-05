@@ -77,6 +77,7 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="user@example.com"
             onChange={handleChange}
             onFocus={handleFocus}
+            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             isValid={mailRegex.test(data.userMail) && wasFocused.userMail}
             isInvalid={!mailRegex.test(data.userMail) && wasFocused.userMail}
           />
@@ -90,6 +91,7 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="Contraseña"
             onChange={handleChange}
             onFocus={handleFocus}
+            pattern=".{8,}"
             isValid={data.userPass.length >= 8 && wasFocused.userPass}
             isInvalid={data.userPass.length < 8 && wasFocused.userPass}
           />
@@ -103,8 +105,9 @@ const Formulario = ({ setEstadoAlerta }) => {
             placeholder="Repite contraseña"
             onChange={handleChange}
             onFocus={handleFocus}
+            pattern=".{8,}"
             isValid={data.userPass === data.userPassConfirm && data.userPassConfirm.length >= 8 && wasFocused.userPassConfirm}
-            isInvalid={(data.userPass !== data.userPassConfirm || data.userPassConfirm === "") && wasFocused.userPassConfirm}
+            isInvalid={(data.userPass !== data.userPassConfirm || data.userPassConfirm === "" || data.userPassConfirm.length < 8) && wasFocused.userPassConfirm}
           />
           <Form.Control.Feedback type="invalid">Contraseñas nos coinciden</Form.Control.Feedback>
         </Form.Group>
